@@ -39,7 +39,7 @@ class Header extends Component {
                             <div className="visible-lg visible-md">
                               <div className="pull-left p-r-10 p-t-10 fs-16 font-heading">
                                 <div className="dropdown pull-right rightSpacing">
-                                {user && user.data.id ? (
+                                {localStorage['user'] || (user && user.data.id) ? (
                                   <div>
                                     <button className="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                       <span className="thumbnail-wrapper d32 circular inline m-t-5">
@@ -53,12 +53,12 @@ class Header extends Component {
                                     </button>
                                     <ul className="dropdown-menu profile-dropdown" role="menu">
                                       <li>
-                                        <a href="#">
+                                        <Link to="/profile">
                                           <i className="pg-settings_small"></i> 
                                           Settings
-                                        </a>
+                                        </Link>
                                       </li>
-                                      <li className="bg-master-lighter" onClick={() => dispatch(logout())}>
+                                      <li className="bg-master-lighter" onClick={() => {dispatch(logout());localStorage.removeItem('user');window.location.reload()}}>
                                         <Link to="/" className="clearfix">
                                           <span className="pull-left">Logout</span>
                                           <span className="pull-right"><i className="pg-power"></i></span>
