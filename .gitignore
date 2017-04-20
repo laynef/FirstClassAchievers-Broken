@@ -1,6 +1,4 @@
 **/node_modules
-web/public/theme/assets
-web/public/theme/pages
 
 api/config
 database/config
